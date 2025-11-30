@@ -1,0 +1,20 @@
+{
+  "name": "entry-toastify",
+  "module": "src/index.ts",
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "private": true,
+  "scripts": {
+    "watch": "bun build --watch --sourcemap=inline --minify --format=iife --outdir=build/dist --outfile=build/dist/index.js src/index.ts",
+    "build": "bun build --minify --format=iife --outdir=build/dist --outfile=build/dist/index.js src/index.ts"
+  },
+  "type": "module",
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "eslint": "^9.39.1",
+    "globals": "^16.5.0",
+    "jiti": "^2.6.1",
+    "typescript-eslint": "^8.48.0"
+  }
+}
