@@ -18,6 +18,22 @@ export default (Lang: Lang) => {
       canNotLocateTime: time => `'${none}' 오브젝트의 위치로 ${time}초 동안 이동할 수 없습니다.`,
       canNotSeeAngleObject: `'${none}' 오브젝트 쪽을 바라볼 수 없습니다.`,
 
+      // 생김새 카테고리
+      canNotChangeShapeOfTextBox: (name, direction) => `'${name}'은(는) 글상자이므로 ${direction} 모양으로 바꿀 수 없습니다.`,
+      directions: {
+        next: Lang.Blocks.LOOKS_change_shape_next,
+        prev: Lang.Blocks.LOOKS_change_shape_prev,
+      },
+
+      canNotAddEffectToTextBox: (name, effect, value) => `'${name}'은(는) 글상자이므로 ${effect} 효과를 ${value}만큼 줄 수 없습니다.`,
+      canNotApplyEffectToTextBox: (name, effect, value) => `'${name}'은(는) 글상자이므로 ${effect} 효과를 ${value}(으)로 정할 수 없습니다.`,
+      effects: {
+        color: Lang.Blocks.color,
+        brightness: Lang.Blocks.brightness,
+        opacity: Lang.Blocks.opacity,
+        transparency: Lang.Blocks.transparency,
+      },
+
       // 글상자 카테고리
       canNotReadText: name => `글상자가 아닌 오브젝트 '${name}'의 내용을 읽을 수 없습니다.`,
 

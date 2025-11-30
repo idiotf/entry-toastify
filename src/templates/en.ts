@@ -18,6 +18,22 @@ export default (Lang: Lang) => {
       canNotLocateTime: time => `Cannot move to the position of '${none}' for ${time} seconds.`,
       canNotSeeAngleObject: `Cannot look toward '${none}'.`,
 
+      // 생김새 카테고리
+      canNotChangeShapeOfTextBox: (name, direction) => `Cannot change to ${direction} shape because '${name}' is a text box.`,
+      directions: {
+        next: Lang.Blocks.LOOKS_change_shape_next,
+        prev: Lang.Blocks.LOOKS_change_shape_prev,
+      },
+
+      canNotAddEffectToTextBox: (name, effect, value) => `Cannot change the ${effect} effect of '${name}' by ${value} because it is a text box.`,
+      canNotApplyEffectToTextBox: (name, effect, value) => `Cannot set the ${effect} effect of '${name}' to ${value} because it is a text box.`,
+      effects: {
+        color: Lang.Blocks.color,
+        brightness: Lang.Blocks.brightness,
+        opacity: Lang.Blocks.opacity,
+        transparency: Lang.Blocks.transparency,
+      },
+
       // 글상자 카테고리
       canNotReadText: name => `Cannot read text because '${name}' is not a text box.`,
 
