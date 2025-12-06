@@ -5,6 +5,8 @@ export default (Lang: Lang) => {
 
   return {
     Blocks: {
+      entityIsUndefined: `실행하는 주체가 '${none}'입니다.\n함수의 결괏값으로 다른 함수를 사용한 것으로 보입니다.`,
+
       // 시작 카테고리
       valueCanNotBeNullOrUndefined: `'${none}' 신호를 보낼 수 없습니다.`,
       valueCanNotBeNullOrUndefinedWait: `'${none}' 신호를 보내고 기다릴 수 없습니다.`,

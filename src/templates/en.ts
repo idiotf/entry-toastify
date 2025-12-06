@@ -5,6 +5,8 @@ export default (Lang: Lang) => {
 
   return {
     Blocks: {
+      entityIsUndefined: `The executing entity is '${none}'.\nIt appears that another function was used as the result of the function.`,
+
       // 시작 카테고리
       valueCanNotBeNullOrUndefined: `Cannot send '${none}' signal.`,
       valueCanNotBeNullOrUndefinedWait: `Cannot send '${none}' signal and wait.`,

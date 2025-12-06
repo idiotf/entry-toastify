@@ -25,6 +25,12 @@ export function setLanguage() {
 declare const Lang: typeof globalThis.Lang
 
 export const templates: ErrorTemplate[] = [
+  // entity가 undefined일 때
+  (_error, scope) => {
+    if (scope.entity) return
+    return Lang.Blocks.entityIsUndefined
+  },
+
   // #region 시작 카테고리
 
   // '대상 없음' 신호
