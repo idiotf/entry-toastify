@@ -1,7 +1,7 @@
 {
   "name": "Entry Toastify",
   "description": "엔트리 작품에서 발생하는 경고 메시지를 직관적으로 변경해줍니다.",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "manifest_version": 3,
   "content_scripts": [{
     "matches": ["https://playentry.org/*"],

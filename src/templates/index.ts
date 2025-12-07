@@ -220,7 +220,7 @@ export const templates: ErrorTemplate[] = [
 
   // 리스트의 범위를 벗어난 항목 접근
   (error, scope) => {
-    if (error.message != 'can not insert value to array') return
+    if (error.message != 'can not insert value to array' && !error.message.includes('data')) return
 
     const listId = scope.getStringField('LIST')
     const index = scope.getValue('INDEX')
