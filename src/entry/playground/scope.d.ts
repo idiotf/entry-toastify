@@ -21,8 +21,10 @@ export class Scope {
   _setBlockState(this: Scope, fieldBlock: unknown, valueState: unknown): void
   _setChildBlockState(this: Scope, fieldBlocks: unknown, currentBlockId: unknown): void
 
-  getValues<T extends string[]>(this: Scope, keys: T, scope?: Scope): Record<keyof T, unknown>
   getValue(this: Scope, key: string, scope?: Scope): unknown
+  getValues<const T extends string[]>(this: Scope, keys: T, scope?: Scope): {
+    [K in keyof T]: unknown
+  }
 
   /**
    * 일반 getValue 값을 가져오기 전,

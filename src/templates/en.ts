@@ -5,11 +5,11 @@ export default (Lang: Lang) => {
 
   return {
     Blocks: {
-      entityIsUndefined: `The executing entity is '${none}'.\nIt appears that another function was used as the result of the function.`,
+      entityIsUndefined: `The executing entity is '${none}'.\nIt seems that a function was used as the return value of another function.`,
 
       // 시작 카테고리
-      valueCanNotBeNullOrUndefined: `Cannot send '${none}' signal.`,
-      valueCanNotBeNullOrUndefinedWait: `Cannot send '${none}' signal and wait.`,
+      valueCanNotBeNullOrUndefined: `Cannot send the '${none}' signal.`,
+      valueCanNotBeNullOrUndefinedWait: `Cannot send the '${none}' signal and wait.`,
 
       // 흐름 카테고리
       canNotRepeatCountNegative: iterNumber => `Cannot repeat ${iterNumber} times.`,
@@ -18,7 +18,7 @@ export default (Lang: Lang) => {
       // 움직임 카테고리
       canNotLocate: `Cannot move to the position of '${none}'.`,
       canNotLocateTime: time => `Cannot move to the position of '${none}' for ${time} seconds.`,
-      canNotSeeAngleObject: `Cannot look toward '${none}'.`,
+      canNotSeeAngleObject: `Cannot turn toward '${none}'.`,
 
       // 생김새 카테고리
       canNotChangeShapeOfTextBox: (name, direction) => `Cannot change to ${direction} shape because '${name}' is a text box.`,
@@ -37,13 +37,13 @@ export default (Lang: Lang) => {
       },
 
       // 글상자 카테고리
-      canNotReadText: name => `Cannot read text because '${name}' is not a text box.`,
+      canNotReadText: name => `Cannot read the text of '${name}' because it is not a text box.`,
 
       // 판단 카테고리
       canNotReachSomething: `Cannot detect collision with '${none}'.`,
 
       // 계산 카테고리
-      canNotCoordinateObject: targetStr => `Cannot read ${targetStr} of '${none}'.`,
+      canNotCoordinateObject: targetStr => `Cannot read the ${targetStr} of '${none}'.`,
       coordinateTargets: {
         x:             Lang.Blocks.CALC_coordinate_x_value,
         y:             Lang.Blocks.CALC_coordinate_y_value,
@@ -61,24 +61,33 @@ export default (Lang: Lang) => {
         acos_radian: Lang.Blocks.CALC_calc_operation_acos,
       },
 
-      canNotReadCharAt: (string, index) => `Cannot read the ${index}th character of '${string}' (out of range).`,
-      canNotSubstring: (string, start, end) => `Cannot read characters ${start}–${end} of '${string}' (out of range).`,
+      canNotReadCharAt: (string, index) => `Cannot read the ${index}th letter of '${string}' (out of range).`,
+      canNotSubstring: (string, start, end) => `Cannot read substring of '${string}' from ${start} to ${end} (out of range).`,
 
       // 자료 카테고리
-      messageCanNotBeEmpty: `Cannot ask with an empty string.`,
+      messageCanNotBeEmpty: `Cannot ask and wait with an empty string.`,
 
-      canNotGetVariable: `Cannot get value of variable '${none}'.`,
-      canNotChangeVariable: value => `Cannot add to '${none}' variable by '${value}'.`,
-      canNotSetVariable: value => `Cannot set '${none}' variable to '${value}'.`,
+      canNotGetVariable: `Cannot get the value of variable '${none}'.`,
+      canNotChangeVariable: value => `Cannot add to variable '${none}' by '${value}'.`,
+      canNotSetVariable: value => `Cannot set variable '${none}' to '${value}'.`,
 
-      canNotReadValueFromArray: (listName, index) => `Cannot read the ${index}th item of the list '${listName || none}' (out of range).`,
-      canNotInsertValueToArray: (listName, index, data) => `Cannot insert '${data}' into the ${index}th position of the list '${listName || none}'.`,
-      canNotChangeValueFromArray: (listName, index, data) => `Cannot change the ${index}th item of the list '${listName || none}' to '${data}'.`,
-      canNotRemoveValueFromArray: (listName, index) => `Cannot remove the ${index}th item from the list '${listName || none}' (out of range).`,
+      canNotShowVariable: `Cannot show variable '${none}'.`,
+      canNotHideVariable: `Cannot hide variable '${none}'.`,
+
+      canNotReadValueFromArray: (listName, index) => `Cannot read the ${index}th item of list '${listName ?? none}' (out of range).`,
+      canNotGetLengthOfList: `Cannot get the number of items in list '${none}'.`,
+
+      canNotAddValueToArray: value => `Cannot add '${value}' to list '${none}'.`,
+      canNotInsertValueToArray: (listName, index, data) => `Cannot insert '${data}' at ${index}th position of list '${listName ?? none}'.`,
+      canNotChangeValueFromArray: (listName, index, data) => `Cannot replace the ${index}th item of list '${listName ?? none}' to '${data}'.`,
+      canNotRemoveValueFromArray: (listName, index) => `Cannot remove the ${index}th item of list '${listName ?? none}' (out of range).`,
+
+      canNotShowList: `Cannot show list '${none}'.`,
+      canNotHideList: `Cannot hide list '${none}'.`,
 
       // 함수 카테고리
-      canNotGetFuncVariable: `Cannot get value of local variable '${none}'.`,
-      canNotSetFuncVariable: value => `Cannot set '${none}' local variable to '${value}'.`,
+      canNotGetFuncVariable: `Cannot get the value of local variable '${none}'.`,
+      canNotSetFuncVariable: value => `Cannot set local variable '${none}' to '${value}'.`,
     },
   } satisfies LanguagePack
 }

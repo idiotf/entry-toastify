@@ -204,7 +204,7 @@ export const templates: ErrorTemplate[] = [
 
   // '대상 없음' 변수에 값 더하기
   (error, scope) => {
-    if (scope.type != 'change_variable' || !error.message.includes('getValue')) return
+    if (scope.type != 'change_variable' || !error.message.includes('isRealTime_')) return
 
     const value = scope.getValue('VALUE')
     return Lang.Blocks.canNotChangeVariable(value)
@@ -212,10 +212,67 @@ export const templates: ErrorTemplate[] = [
 
   // '대상 없음' 변수의 값 정하기
   (error, scope) => {
-    if (scope.type != 'set_variable' || !error.message.includes('setValue')) return
+    if (scope.type != 'set_variable' || !error.message.includes('isRealTime_')) return
 
     const value = scope.getValue('VALUE')
     return Lang.Blocks.canNotSetVariable(value)
+  },
+
+  // 변수/리스트 '대상 없음' 보이기/숨기기
+  (error, scope) => {
+    if (!error.message.includes('setVisible')) return
+
+    switch (scope.type) {
+      case 'show_variable':
+        return Lang.Blocks.canNotShowVariable
+
+      case 'hide_variable':
+        return Lang.Blocks.canNotHideVariable
+
+      case 'show_list':
+        return Lang.Blocks.canNotShowList
+
+      case 'hide_list':
+        return Lang.Blocks.canNotHideList
+    }
+  },
+
+  // '대상 없음' 리스트에 항목 추가
+  (error, scope) => {
+    if (scope.type != 'add_value_to_list' || !error.message.includes('isCloud_')) return
+
+    const value = scope.getValue('VALUE')
+    return Lang.Blocks.canNotAddValueToArray(value)
+  },
+
+  // '대상 없음' 리스트에 접근
+  (error, scope) => {
+    if (!error.message.includes('getArray')) return
+
+    switch (scope.type) {
+      case 'value_of_index_from_list': {
+        const index = scope.getValue('INDEX')
+        return Lang.Blocks.canNotReadValueFromArray(null, index)
+      }
+
+      case 'insert_value_to_list': {
+        const [data, index] = scope.getValues(['DATA', 'INDEX'])
+        return Lang.Blocks.canNotInsertValueToArray(null, index, data)
+      }
+
+      case 'change_value_list_index': {
+        const [data, index] = scope.getValues(['DATA', 'INDEX'])
+        return Lang.Blocks.canNotChangeValueFromArray(null, index, data)
+      }
+
+      case 'remove_value_from_list': {
+        const index = scope.getValue('VALUE')
+        return Lang.Blocks.canNotRemoveValueFromArray(null, index)
+      }
+
+      case 'length_of_list':
+        return Lang.Blocks.canNotGetLengthOfList
+    }
   },
 
   // 리스트의 범위를 벗어난 항목 접근

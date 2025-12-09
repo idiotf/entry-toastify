@@ -71,10 +71,19 @@ export default (Lang: Lang) => {
       canNotChangeVariable: value => `'${none}' 변수에 '${value}'만큼 더할 수 없습니다.`,
       canNotSetVariable: value => `'${none}' 변수를 '${value}'(으)로 정할 수 없습니다.`,
 
-      canNotReadValueFromArray: (listName, index) => `'${listName || none}' 리스트에 없는 ${index}번째 항목을 읽을 수 없습니다.`,
-      canNotInsertValueToArray: (listName, index, data) => `'${data}' 항목을 '${listName || none}' 리스트의 ${index}번째에 넣을 수 없습니다.`,
-      canNotChangeValueFromArray: (listName, index, data) => `'${listName || none}' 리스트의 ${index}번째 항목을 '${data}'(으)로 바꿀 수 없습니다.`,
-      canNotRemoveValueFromArray: (listName, index) => `'${listName || none}' 리스트에 없는 ${index}번째 항목을 삭제할 수 없습니다.`,
+      canNotShowVariable: `'${none}' 변수를 보일 수 없습니다.`,
+      canNotHideVariable: `'${none}' 변수를 숨길 수 없습니다.`,
+
+      canNotReadValueFromArray: (listName, index) => `'${listName ?? none}' 리스트에 없는 ${index}번째 항목을 읽을 수 없습니다.`,
+      canNotGetLengthOfList: `'${none}' 리스트의 항목 수를 구할 수 없습니다.`,
+
+      canNotAddValueToArray: value => `'${value}' 항목을 '${none}' 리스트에 추가할 수 없습니다.`,
+      canNotInsertValueToArray: (listName, index, data) => `'${data}' 항목을 '${listName ?? none}' 리스트의 ${index}번째에 넣을 수 없습니다.`,
+      canNotChangeValueFromArray: (listName, index, data) => `'${listName ?? none}' 리스트의 ${index}번째 항목을 '${data}'(으)로 바꿀 수 없습니다.`,
+      canNotRemoveValueFromArray: (listName, index) => `'${listName ?? none}' 리스트에 없는 ${index}번째 항목을 삭제할 수 없습니다.`,
+
+      canNotShowList: `'${none}' 리스트를 보일 수 없습니다.`,
+      canNotHideList: `'${none}' 리스트를 숨길 수 없습니다.`,
 
       // 함수 카테고리
       canNotGetFuncVariable: `'${none}' 지역변수의 값을 구할 수 없습니다.`,
