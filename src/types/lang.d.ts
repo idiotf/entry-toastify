@@ -1,4 +1,4 @@
-import type { setLanguage } from '../templates'
+import type { setLanguage } from '../lang'
 
 type Language = ReturnType<typeof setLanguage>
 type LanguageUnion = Language[keyof Language]

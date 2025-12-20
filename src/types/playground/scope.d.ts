@@ -5,7 +5,7 @@ export class Scope {
   block: unknown
   type: string | null //legacy
   executor: unknown
-  entity: EntityObject
+  entity?: EntityObject
 
   constructor(block: unknown, executor: unknown)
 

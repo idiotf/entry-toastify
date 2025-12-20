@@ -1,14 +1,17 @@
-import type * as Entry from './entry'
-import { setLanguage, templates } from './templates'
+import type * as Entry from './types'
+import { templates } from './blocks'
+import { setLanguage } from './lang'
 
 declare global {
-  var Entry: typeof import('./entry')
-  var Lang: typeof import('./entry/lang')
+  var Entry: typeof import('./types')
+  var Lang: typeof import('./types/lang')
 }
 
 (async () => {
 
 const { Entry, Lang } = await new Promise<typeof globalThis>(resolve => {
+  if ('Entry' in self && 'Lang' in self) return resolve(self)
+
   const interval = setInterval(() => {
     if ('Entry' in self && 'Lang' in self) {
       resolve(self)
@@ -38,16 +41,21 @@ function parseError(error: unknown, scope: Entry.Scope) {
 
 const errorSet = new WeakSet
 
+function onCatch(scope: Entry.Scope, e: unknown): never {
+  if (typeof e != 'object' || !e || !errorSet.has(e)) {
+    lastError = parseError(e, lastThrownScope = scope)
+    if (typeof e == 'object' && e) errorSet.add(e)
+  }
+  throw e
+}
+
 Entry.Scope.prototype.run = (run => function(entity, isValue) {
   try {
-    return run.call(this, entity, isValue)
+    const v = run.call(this, entity, isValue)
+    if (v instanceof Promise) return v.catch(e => onCatch(this, e))
+    return v
   } catch (e) {
-    if (typeof e != 'object' || !e || !errorSet.has(e)) {
-      // eslint-disable-next-line @typescript-eslint/no-this-alias
-      lastError = parseError(e, lastThrownScope = this)
-      if (typeof e == 'object' && e) errorSet.add(e)
-    }
-    throw e
+    onCatch(this, e)
   }
 })(Entry.Scope.prototype.run)
 
@@ -71,6 +79,8 @@ Entry.Utils.stopProjectWithToast = (stopProjectWithToast => (scope, message, err
 Entry.moduleManager?.setLanguageTemplates({ setLanguage })
 
 const { toast } = await new Promise<typeof Entry>(resolve => {
+  if ('toast' in Entry) return resolve(Entry)
+
   const interval = setInterval(() => {
     if ('toast' in Entry) {
       resolve(Entry)
