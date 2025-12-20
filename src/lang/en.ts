@@ -88,6 +88,40 @@ export default (Lang: Lang) => {
       // 함수 카테고리
       canNotGetFuncVariable: `Cannot get the value of local variable '${none}'.`,
       canNotSetFuncVariable: value => `Cannot set local variable '${none}' to '${value}'.`,
+
+      // 데이터분석 카테고리
+      canNotAppendRowToTable: `Cannot add a row to table '${none}'.`,
+      canNotAppendColToTable: `Cannot add a column to table '${none}'.`,
+
+      canNotInsertRowToTable: number => `Cannot insert a row at position ${number} in table '${none}'.`,
+      canNotInsertColToTable: number => `Cannot insert a column at position ${number} in table '${none}'.`,
+
+      canNotDeleteRowFromTable: number => `Cannot delete row ${number} from table '${none}'.`,
+      canNotDeleteColFromTable: number => `Cannot delete column ${number} from table '${none}'.`,
+
+      canNotSetValueFromTable: (row, value) => `Cannot set the value in row ${row} of table '${none}' to '${value}'.`,
+      canNotSaveCurrentTable: `Cannot save the current state of table '${none}'.`,
+      canNotSetValueFromCell: (cell, value) => `Cannot set the value of cell ${cell} in table '${none}' to '${value}'.`,
+
+      canNotGetRowCount: `Cannot get the number of rows in table '${none}'.`,
+      canNotGetColCount: `Cannot get the number of columns in table '${none}'.`,
+
+      canNotGetValueFromTable: row => `Cannot get the value from row ${row} in table '${none}'.`,
+      canNotGetValueFromCell: cell => `Cannot get the value of cell ${cell} in table '${none}'.`,
+      canNotGetValueFromLastRow: `Cannot get the value from the last row of table '${none}'.`,
+
+      canNotCalcValuesFromTable: calc => `Cannot calculate ${calc} of the column in table '${none}'.`,
+      tableCalcValues: {
+        SUM:    Lang.Blocks.table_sum,
+        MAX:    Lang.Blocks.table_max,
+        MIN:    Lang.Blocks.table_min,
+        AVG:    Lang.Blocks.table_avg,
+        STDEV:  Lang.Blocks.table_stdev,
+        MEDIAN: Lang.Blocks.table_median,
+      },
+
+      canNotGetCoefficient: `Cannot calculate the correlation coefficient of table '${none}'.`,
+      canNotVLookupTable: value => `Cannot find a row in table '${none}' that matches '${value}'.`,
     },
   } satisfies LanguagePack
 }

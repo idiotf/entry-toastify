@@ -88,6 +88,40 @@ export default (Lang: Lang) => {
       // 함수 카테고리
       canNotGetFuncVariable: `'${none}' 지역변수의 값을 구할 수 없습니다.`,
       canNotSetFuncVariable: value => `'${none}' 지역변수를 '${value}'(으)로 정할 수 없습니다.`,
+
+      // 데이터분석 카테고리
+      canNotAppendRowToTable: `테이블 '${none}'에 행을 추가할 수 없습니다.`,
+      canNotAppendColToTable: `테이블 '${none}'에 열을 추가할 수 없습니다.`,
+
+      canNotInsertRowToTable: number => `테이블 '${none}'의 ${number}번째 위치에 행을 추가할 수 없습니다.`,
+      canNotInsertColToTable: number => `테이블 '${none}'의 ${number}번째 위치에 열을 추가할 수 없습니다.`,
+
+      canNotDeleteRowFromTable: number => `테이블 '${none}'의 ${number}번째 행을 삭제할 수 없습니다.`,
+      canNotDeleteColFromTable: number => `테이블 '${none}'의 ${number}번째 열을 삭제할 수 없습니다.`,
+
+      canNotSetValueFromTable: (number, value) => `테이블 '${none}'의 ${number}번째 행에 있는 값을 '${value}'(으)로 바꿀 수 없습니다.`,
+      canNotSetValueFromCell: (cell, value) => `테이블 '${none}'의 ${cell} 셀 값을 '${value}'(으)로 설정할 수 없습니다.`,
+      canNotSaveCurrentTable: `테이블 '${none}'을 현재 상태로 저장할 수 없습니다.`,
+
+      canNotGetRowCount: `테이블 '${none}'의 행 개수를 구할 수 없습니다.`,
+      canNotGetColCount: `테이블 '${none}'의 열 개수를 구할 수 없습니다.`,
+
+      canNotGetValueFromTable: row => `테이블 '${none}'의 ${row}번째 행에 있는 값을 구할 수 없습니다.`,
+      canNotGetValueFromCell: cell => `테이블 '${none}'의 ${cell} 셀 값을 구할 수 없습니다.`,
+      canNotGetValueFromLastRow: `테이블 '${none}'의 마지막 행에 있는 값을 구할 수 없습니다.`,
+
+      canNotCalcValuesFromTable: calc => `테이블 '${none}' 열의 ${calc} 구할 수 없습니다.`,
+      tableCalcValues: {
+        SUM: Lang.Blocks.table_sum + '을',
+        MAX: Lang.Blocks.table_max + '를',
+        MIN: Lang.Blocks.table_min + '를',
+        AVG: Lang.Blocks.table_avg + '을',
+        STDEV: Lang.Blocks.table_stdev + '를',
+        MEDIAN: Lang.Blocks.table_median + '을',
+      },
+
+      canNotGetCoefficient: `테이블 '${none}'의 상관계수를 구할 수 없습니다.`,
+      canNotVLookupTable: value => `테이블 '${none}'에서 '${value}'와 같은 값을 가진 행을 찾을 수 없습니다.`,
     },
   } satisfies LanguagePack
 }

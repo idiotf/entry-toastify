@@ -9,6 +9,7 @@ import judgement from './block_judgement'
 import calc from './block_calc'
 import variable from './block_variable'
 import func from './block_func'
+import analysis from './block_analysis'
 
 export interface ErrorTemplate {
   (error: Error, scope: Scope): string | undefined
@@ -24,6 +25,7 @@ export const templates: ErrorTemplate[] = [
   ...calc,
   ...variable,
   ...func,
+  ...analysis,
 
   // entity가 undefined일 때
   (_error, scope) => {
